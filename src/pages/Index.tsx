@@ -23,8 +23,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
-      <ParticleField />
+      {/* {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />} */}
+      {/* <ParticleField /> */}
       <CursorTrail />
       <Navbar />
       {/* <Hero /> */}
