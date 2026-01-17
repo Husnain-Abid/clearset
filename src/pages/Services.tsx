@@ -200,22 +200,10 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="absolute inset-0 bg-radial-gradient" />
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-
-              <span className="text-5xl font-medium">Service Page</span>
-
-          </div>
-        </div>
-      </section>
 
       {/* Hero Section */}
-      {/* <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute inset-0 bg-radial-gradient" />
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
@@ -251,10 +239,10 @@ const Services = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Services Detail Section */}
-      {/* <section className="py-20">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="space-y-24">
             {services.map((service, index) => (
@@ -264,9 +252,9 @@ const Services = () => {
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-24 ${
                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
-              > */}
+              >
                 {/* Content */}
-                {/* <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm mb-4">
                     <service.icon className="w-4 h-4" />
                     <span>Service</span>
@@ -297,10 +285,10 @@ const Services = () => {
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
-                </div> */}
+                </div>
 
                 {/* Visual Card */}
-                {/* <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                   <div className="relative">
                     <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl opacity-50" />
                     <div className="relative glass-card p-8 md:p-12">
@@ -318,10 +306,10 @@ const Services = () => {
             ))}
           </div>
         </div>
-      </section>*/}
+      </section>
 
       {/* CTA Section */}
-      {/* <section className="py-20 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px]" />
 
@@ -354,9 +342,9 @@ const Services = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
