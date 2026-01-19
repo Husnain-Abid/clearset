@@ -55,24 +55,8 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="absolute inset-0 bg-radial-gradient" />
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-
-              <span className="text-5xl font-medium">About Page</span>
-
-          </div>
-        </div>
-      </section>
-
-
-
       {/* Hero Section */}
-      {/* <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -102,10 +86,10 @@ const About = () => {
                 />
               </div>
             </div>
-          </div> */}
+          </div>
 
           {/* Stats */}
-          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
             {stats.map((stat, index) => (
               <div
                 key={index}
@@ -117,10 +101,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Mission Section */}
-      {/* <section className="py-20 relative">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
@@ -133,10 +117,10 @@ const About = () => {
                 "To support, respond to, and educate artificial intelligence into communities, professionals, and organizations by developing cutting-edge AI solutions that are accessible, practical, and transformative for businesses of every size and industry."
               </p>
             </div>
-          </div> */}
+          </div>
 
           {/* Values */}
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <div
                 key={index}
@@ -151,10 +135,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Timeline Section */}
-      {/* <section className="py-20 relative">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -166,9 +150,9 @@ const About = () => {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="relative"> */}
+            <div className="relative">
               {/* Timeline line */}
-              {/* <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
               
               {timeline.map((item, index) => (
                 <div
@@ -176,12 +160,12 @@ const About = () => {
                   className={`relative flex items-start gap-8 mb-12 ${
                     index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
-                > */}
+                >
                   {/* Year bubble */}
-                  {/* <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background -translate-x-1/2 mt-1.5 z-10" /> */}
+                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background -translate-x-1/2 mt-1.5 z-10" />
                   
                   {/* Content */}
-                  {/* <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                  <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
                     <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-2">
                       {item.year}
                     </div>
@@ -193,10 +177,10 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Founder Section */}
-      {/* <section className="py-20 relative">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold">
@@ -239,10 +223,10 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* CTA Section */}
-      {/* <section className="py-20 relative">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="glass-card p-12 md:p-16 rounded-3xl border border-border text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -258,7 +242,7 @@ const About = () => {
             </Link>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* <Footer /> */}
     </div>

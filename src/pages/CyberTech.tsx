@@ -118,22 +118,8 @@ const CyberTechPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="absolute inset-0 bg-radial-gradient" />
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-
-              <span className="text-5xl font-medium">CyberTech Page</span>
-
-          </div>
-        </div>
-      </section>
-
       {/* Hero Section */}
-      {/* <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -177,10 +163,10 @@ const CyberTechPage = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Seamless Data Protection */}
-      {/* <section className="py-20 relative">
+      <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -206,10 +192,10 @@ const CyberTechPage = () => {
                 <p className="text-muted-foreground">{feature.description}</p>
               </div>
             ))}
-          </div> */}
+          </div>
 
           {/* Capabilities Grid */}
-          {/* <div className="glass-card p-8 md:p-12 rounded-3xl border border-border">
+          <div className="glass-card p-8 md:p-12 rounded-3xl border border-border">
             <h3 className="text-2xl font-bold mb-8 text-center">
               From solo projects to global enterprises — choose the option that fits your needs
             </h3>
@@ -226,10 +212,10 @@ const CyberTechPage = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Partnership Opportunities */}
-      {/* <section id="partnerships" className="py-20 relative">
+      <section id="partnerships" className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -263,14 +249,14 @@ const CyberTechPage = () => {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Partner With Us Form Section */}
-      {/* <section id="contact" className="py-20 relative">
+      <section id="contact" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12"> */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Form */}
-            {/* <div className="glass-card p-8 md:p-12 rounded-3xl border border-border">
+            <div className="glass-card p-8 md:p-12 rounded-3xl border border-border">
               <h2 className="text-3xl font-bold mb-4">Partner With Us</h2>
               <p className="text-muted-foreground mb-8">
                 Ready to expand your CyberTech portfolio? Fill out the form below and we'll get back to you within 24 hours.
@@ -317,10 +303,10 @@ const CyberTechPage = () => {
                   We'll respond to partnership inquiries within 24 hours.
                 </p>
               </form>
-            </div> */}
+            </div>
 
             {/* Why Partner */}
-            {/* <div>
+            <div>
               <h3 className="text-2xl font-bold mb-8">Why Partner With ClearSet.AI?</h3>
               <div className="space-y-6">
                 {whyPartner.map((item, index) => (
@@ -353,9 +339,9 @@ const CyberTechPage = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

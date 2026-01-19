@@ -71,28 +71,13 @@ const Blogs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="absolute inset-0 bg-radial-gradient" />
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-
-              <span className="text-5xl font-medium">blog Page</span>
-
-          </div>
-        </div>
-      </section>
-
-
+    
 
       {/* Hero Section */}
-      {/* <ParallaxSection speed={0.3}>
-        <section className="pt-32 pb-16 relative overflow-hidden"> */}
+      <ParallaxSection speed={0.3}>
+        <section className="pt-32 pb-16 relative overflow-hidden">
           {/* Background effects */}
-          {/* <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
           
@@ -112,18 +97,18 @@ const Blogs = () => {
             </SmoothReveal>
           </div>
         </section>
-      </ParallaxSection> */}
+      </ParallaxSection>
 
       {/* Blog Grid */}
-      {/* <section className="py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
               <SmoothReveal key={post.id} delay={index * 100}>
                 <TiltCard className="h-full">
-                  <article className="glass-card rounded-2xl overflow-hidden border border-border group h-full flex flex-col"> */}
+                  <article className="glass-card rounded-2xl overflow-hidden border border-border group h-full flex flex-col">
                     {/* Image */}
-                    {/* <div className="relative h-48 overflow-hidden">
+                    <div className="relative h-48 overflow-hidden">
                       <img
                         src={post.image}
                         alt={post.title}
@@ -133,19 +118,19 @@ const Blogs = () => {
                       <span className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium backdrop-blur-sm">
                         {post.category}
                       </span>
-                    </div> */}
+                    </div>
                     
                     {/* Content */}
-                    {/* <div className="p-6 flex flex-col flex-grow">
+                    <div className="p-6 flex flex-col flex-grow">
                       <h2 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
                         {post.title}
                       </h2>
                       <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-grow">
                         {post.excerpt}
-                      </p> */}
+                      </p>
                       
                       {/* Meta */}
-                      {/* <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border">
+                      <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border">
                         <div className="flex items-center gap-4">
                           <span className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
@@ -156,10 +141,10 @@ const Blogs = () => {
                             {post.readTime}
                           </span>
                         </div>
-                      </div> */}
+                      </div>
                       
                       {/* Read More */}
-                      {/* <Link 
+                      <Link 
                         to={`/blogs/${post.id}`}
                         className="mt-4 inline-flex items-center gap-2 text-primary text-sm font-medium group/link"
                       >
@@ -173,10 +158,10 @@ const Blogs = () => {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Newsletter CTA */}
-      {/* <section className="py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <SmoothReveal>
             <div className="glass-card rounded-3xl p-8 md:p-12 text-center border border-border relative overflow-hidden">
@@ -202,9 +187,9 @@ const Blogs = () => {
             </div>
           </SmoothReveal>
         </div>
-      </section> */}
+      </section>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
