@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
@@ -61,12 +62,15 @@
     <div id="canvas-container" class="absolute inset-0 z-0"></div>
 
     <!-- Side Panel (Planet Detail) -->
+
+    <!-- Side Panel (Service Detail) -->
     <aside id="planet-panel"
         class="absolute top-24 right-6 z-40 w-80 glass-panel rounded-2xl p-6 translate-x-96 transition-transform duration-500 ease-out opacity-0 pointer-events-auto flex flex-col gap-4">
         <div class="flex justify-between items-start">
             <div>
-                <h2 id="panel-title" class="text-3xl font-medium tracking-tight text-white mb-1">Earth</h2>
-                <p id="panel-subtitle" class="text-sm text-indigo-400 font-medium tracking-tight">The Blue Marble</p>
+                <h2 id="panel-title" class="text-3xl font-medium tracking-tight text-white mb-1">Service Name</h2>
+                <p id="panel-subtitle" class="text-sm font-medium tracking-tight" style="color: #00e6b8;">Service
+                    Category</p>
             </div>
             <button id="close-panel" class="text-slate-400 hover:text-white transition-colors">
                 <i data-lucide="x" class="w-5 h-5"></i>
@@ -74,25 +78,37 @@
         </div>
 
 
+
         <div class="space-y-2">
-            <h3 class="text-xs font-medium uppercase tracking-wider text-slate-500"> Details</h3>
-            <p id="panel-fact" class="text-sm text-slate-300 leading-relaxed">Earth is the only planet known to support
-                life and has liquid water on its surface.</p>
+            <h3 class="text-xs font-medium uppercase tracking-wider text-slate-500">Description</h3>
+            <p id="panel-fact" class="text-sm text-slate-300 leading-relaxed">Service description goes here.</p>
         </div>
 
 
     </aside>
 
+
+
+
     <!-- Bottom Controls & Nav -->
     <div class="absolute bottom-8 left-6 right-6 z-50 flex flex-col gap-4 pointer-events-none">
 
-        <!-- Planet Navigation List -->
+        <!-- Service Navigation List -->
         <div class="w-full overflow-x-auto hide-scrollbar pointer-events-auto pb-2">
             <div class="flex justify-center min-w-max px-4 gap-3" id="planet-list">
                 <!-- Dynamically populated by JS -->
             </div>
         </div>
+
     </div>
+
+
+
+
+
+
+
+
 
     <!-- Overlay for loading -->
     <div id="loader"
@@ -103,22 +119,119 @@
 
 
 
+
+    <div id="planet-tooltip"
+        style="position: fixed; left: 712px; top: 582px; background: rgba(0, 230, 184, 0.1); border: 1px solid rgba(0, 230, 184, 0.3); padding: 8px 12px; border-radius: 6px; color: rgb(235, 253, 250); font-size: 12px; font-weight: 500; pointer-events: none; z-index: 30; white-space: nowrap; backdrop-filter: blur(8px);">
+    </div>
+
+
+
     <script>
+
         // Initialize Lucide Icons
         lucide.createIcons();
 
         // Data: Solar System
-        const planetsData = [
-            { icon: "brain", name: "ClaearSet", color: 0x00e6b8, size: 12, distance: 0, speed: 0, desc: "Expert AI development, custom SaaS solutions, and strategic consultation to propel your business forward", type: "Company" },
-            { iconTexture: "icons/1.png", icon: "eye", name: "Machine Learning", color: 0xA5A5A5, size: 3, distance: 25, speed: 0.02, desc: "Advanced ML algorithms and models that learn from your data to make intelligent predictions.", type: "Services" },
-            { iconTexture: "icons/2.png", icon: "message-square", name: "Computer Vision", color: 0xE3BB76, size: 4.5, distance: 35, speed: 0.015, desc: "Image and video analysis solutions that detect and track objects with high accuracy.", type: "Services" },
-            { iconTexture: "icons/3.png", icon: "smartphone", name: "Natural Language Processing", color: 0x22A6F3, size: 3.8, distance: 50, speed: 0.01, desc: "Systems that understand and generate human language for chatbots and analytics.", type: "Services" },
-            { iconTexture: "icons/4.png", icon: "cloud", name: "Mobile App Development", color: 0xDD4124, size: 2.5, distance: 65, speed: 0.008, desc: "Native and cross-platform mobile applications with AI-powered features.", type: "Services" },
-            { iconTexture: "icons/5.png", icon: "lightbulb", name: "SaaS Solutions", color: 0xD8CA9D, size: 9, distance: 90, speed: 0.004, desc: "Turn-key SaaS products designed to accelerate your go-to-market strategy.", type: "Services" },
-            { iconTexture: "icons/6.png", icon: "phone", name: "AI Consultation", color: 0xA49B72, size: 7.5, distance: 120, speed: 0.003, desc: "Strategic consulting to help you plan and maximize ROI from AI initiatives.", type: "Services" },
-            { iconTexture: "icons/7.png", icon: "server", name: "Call Center Software", color: 0xC6D3E3, size: 6, distance: 150, speed: 0.002, desc: "Modern cloud-based communication solutions for distributed teams.", type: "Services" },
-            { iconTexture: "icons/8.png", icon: "bot", name: "Cloud Engineering DevSecOps", color: 0x3F54BA, size: 5.8, distance: 180, speed: 0.001, desc: "Secure, scalable cloud infrastructure with integrated security practices.", type: "Services" }
-        ];
+const planetsData = [
+    {
+        name: "Clearset",
+        color: 0x00E6B8,
+        size: 14,
+        distance: 0,
+        speed: 0,
+        desc: "Your trusted partner in innovation and digital transformation. We design, build, and scale intelligent digital solutions that empower businesses to grow faster and smarter.",
+        category: "Core Brand",
+        power: "N/A",
+        type: "Company Hub",
+        capability: 100,
+        isCenter: true
+    },
+    {
+        name: "Machine Learning",
+        color: 0x00E6B8,
+        size: 3.5,
+        distance: 35,
+        speed: 0.015,
+        desc: "Advanced machine learning models built for real-world business problems. We enable automation, prediction, and data-driven decision making at scale.",
+        category: "AI Services",
+        power: "Ultra",
+        type: "Service",
+        capability: 92
+    },
+    {
+        name: "NLP Solutions",
+        color: 0x38BDF8, // Sky Blue
+        size: 3.2,
+        distance: 50,
+        speed: 0.012,
+        desc: "Natural Language Processing solutions for understanding human language. From chatbots to sentiment analysis, we turn text into actionable insights.",
+        category: "AI Services",
+        power: "Ultra",
+        type: "Service",
+        capability: 88
+    },
+    {
+        name: "Mobile Development",
+        color: 0x22C55E, // Emerald Green
+        size: 3.8,
+        distance: 68,
+        speed: 0.009,
+        desc: "High-performance mobile applications for iOS and Android platforms. We focus on scalability, smooth user experience, and long-term maintainability.",
+        category: "Development",
+        power: "High",
+        type: "Service",
+        capability: 85
+    },
+    {
+        name: "Cloud Engineering",
+        color: 0xF59E0B, // Amber
+        size: 4.2,
+        distance: 85,
+        speed: 0.007,
+        desc: "Robust cloud infrastructure designed for reliability and scale. We specialize in DevOps, automation, and secure cloud-native architectures.",
+        category: "Infrastructure",
+        power: "Ultra",
+        type: "Service",
+        capability: 90
+    },
+    {
+        name: "SaaS Solutions",
+        color: 0x6366F1, // Indigo Blue
+        size: 3.6,
+        distance: 105,
+        speed: 0.006,
+        desc: "End-to-end SaaS product development from idea to launch. We build scalable, multi-tenant platforms optimized for growth and performance.",
+        category: "Development",
+        power: "High",
+        type: "Service",
+        capability: 87
+    },
+    {
+        name: "AI Consultancy",
+        color: 0x06B6D4, // Cyan
+        size: 3.4,
+        distance: 125,
+        speed: 0.005,
+        desc: "Strategic AI consulting to guide digital transformation journeys. We help businesses adopt AI responsibly with measurable business impact.",
+        category: "Advisory",
+        power: "Ultra",
+        type: "Service",
+        capability: 89
+    },
+    {
+        name: "Call Center Tech",
+        color: 0x14B8A6, // Teal Green
+        size: 3.9,
+        distance: 150,
+        speed: 0.004,
+        desc: "Smart call center technologies powered by AI automation. Improve customer experience with intelligent routing, analytics, and voice solutions.",
+        category: "Contact Center",
+        power: "High",
+        type: "Service",
+        capability: 86
+    }
+];
+
 
         // Three.js Setup
         const scene = new THREE.Scene();
@@ -128,10 +241,19 @@
         camera.position.set(0, 60, 120);
         camera.lookAt(0, 0, 0);
 
+
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        let isHoveringPlanet = false;
+
+        const tooltip = document.getElementById('planet-tooltip');
 
         // Lighting
         const ambientLight = new THREE.AmbientLight(0x404040, 1.5); // Soft white light
@@ -152,6 +274,118 @@
         const starMesh = new THREE.Points(starsGeometry, starsMaterial);
         scene.add(starMesh);
 
+
+        async function createSunSprite(planet, sunMesh) {
+            await document.fonts.load('bold 380px Inter');
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 512;
+            canvas.height = 512;
+            const ctx = canvas.getContext("2d");
+
+            ctx.font = "bold 380px Inter";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillStyle = "#070b1c";
+            // ctx.fillText("C", canvas.width / 2, canvas.height / 2);
+
+            const texture = new THREE.CanvasTexture(canvas);
+
+            const sprite = new THREE.Sprite(
+                new THREE.SpriteMaterial({
+                    map: texture,
+                    transparent: true,
+                    depthTest: false
+                })
+            );
+
+            sprite.scale.set(planet.size * 2.8, planet.size * 2.8, 1);
+            sprite.position.set(-1, 0, 3);
+
+            // 🔒 LOCK rotation completely
+            sprite.onBeforeRender = () => {
+                sprite.quaternion.copy(camera.quaternion);
+                sprite.rotation.z = 0;
+            };
+
+            sunMesh.add(sprite); // ✅ CHILD OF SUN
+        }
+
+        // ===================================================
+        // SERVICE ICON CREATION
+        // ===================================================
+        /**
+         * Creates a 3D service icon using geometric primitives
+         * Each service gets a unique symbolic representation
+         */
+        function createServiceIcon(name, color, size) {
+            const iconGroup = new THREE.Group();
+
+            // Base icon shape (varies by service)
+            let iconGeometry;
+            let iconMaterial = new THREE.MeshPhongMaterial({
+                color: color,
+                emissive: color,
+                emissiveIntensity: 0.4,
+                shininess: 100
+            });
+
+            switch (name) {
+                case "Machine Learning":
+                    // Octahedron for ML
+                    iconGeometry = new THREE.OctahedronGeometry(size * 0.7, 1);
+                    break;
+                case "NLP Solutions":
+                    // Torus for communication/language
+                    const mesh = new THREE.Mesh(new THREE.TorusGeometry(size * 0.6, size * 0.2, 16, 100), iconMaterial);
+                    iconGroup.add(mesh);
+                    return iconGroup;
+                case "Mobile Development":
+                    // Box for mobile devices
+                    iconGeometry = new THREE.BoxGeometry(size * 0.5, size * 1.2, size * 0.3);
+                    break;
+                case "Cloud Engineering":
+                    // Dodecahedron for cloud/distribution
+                    iconGeometry = new THREE.DodecahedronGeometry(size * 0.65, 0);
+                    break;
+                case "SaaS Solutions":
+                    // Icosahedron for complex structures
+                    iconGeometry = new THREE.IcosahedronGeometry(size * 0.7, 1);
+                    break;
+                case "AI Consultancy":
+                    // Tetrahedron for core/foundation
+                    iconGeometry = new THREE.TetrahedronGeometry(size * 0.8, 0);
+                    break;
+                case "Call Center Tech":
+                    // Cone for broadcasting/communication
+                    iconGeometry = new THREE.ConeGeometry(size * 0.7, size * 1.4, 32);
+                    break;
+                default:
+                    iconGeometry = new THREE.BoxGeometry(size, size, size);
+            }
+
+            const iconMesh = new THREE.Mesh(iconGeometry, iconMaterial);
+            iconGroup.add(iconMesh);
+
+            // Add subtle glow sphere around icon
+            const glowGeometry = new THREE.SphereGeometry(size * 1.3, 16, 16);
+            const glowMaterial = new THREE.MeshBasicMaterial({
+                color: color,
+                transparent: true,
+                opacity: 0.15,
+                side: THREE.BackSide
+            });
+            const glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
+            iconGroup.add(glowMesh);
+
+            return iconGroup;
+        }
+
+
+
+
+
+
         // Planet Mesh Generation
         const planetMeshes = [];
         const orbitLines = [];
@@ -162,44 +396,33 @@
             let object;
 
             if (index === 0) {
-                // ☀️ SUN (SPHERE)
-                const geometry = new THREE.SphereGeometry(planet.size, 32, 32);
-                const material = new THREE.MeshBasicMaterial({ color: planet.color });
-                object = new THREE.Mesh(geometry, material);
+                const centerGeometry = new THREE.SphereGeometry(planet.size, 64, 64);
+                const centerMaterial = new THREE.MeshPhongMaterial({
+                    color: planet.color,
+                    emissive: planet.color,
+                    emissiveIntensity: 0.6,
+                    shininess: 150
+                });
 
-                // Glow
-                const glowGeo = new THREE.SphereGeometry(planet.size * 1.2, 32, 32);
+                const sunMesh = new THREE.Mesh(centerGeometry, centerMaterial);
+                scene.add(sunMesh);
+
+                const glowGeo = new THREE.SphereGeometry(planet.size * 1.3, 32, 32);
                 const glowMat = new THREE.MeshBasicMaterial({
                     color: planet.color,
                     transparent: true,
-                    opacity: 0.2,
+                    opacity: 0.25,
                     side: THREE.BackSide
                 });
-                const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-                object.add(glowMesh);
+                sunMesh.add(new THREE.Mesh(glowGeo, glowMat));
 
-                scene.add(object);
+                createSunSprite(planet, sunMesh);
 
+                object = sunMesh; // ✅ THIS WAS MISSING
             }
-
-
-
-
             else {
-                // 🧠 SERVICES (ICON SPRITES)
-                const textureLoader = new THREE.TextureLoader();
-                const iconTexture = textureLoader.load(planet.iconTexture);
+                object = createServiceIcon(planet.name, planet.color, planet.size);
 
-                const material = new THREE.SpriteMaterial({
-                    map: iconTexture,
-                    transparent: true,
-                    depthWrite: false
-                });
-
-                object = new THREE.Sprite(material);
-                object.scale.set(planet.size * 2, planet.size * 2, 1);
-                object.material.rotation = 0;
-                // Orbit ring
                 const orbitGeo = new THREE.RingGeometry(
                     planet.distance - 0.2,
                     planet.distance + 0.2,
@@ -211,15 +434,18 @@
                     transparent: true,
                     side: THREE.DoubleSide
                 });
+
                 const orbit = new THREE.Mesh(orbitGeo, orbitMat);
                 orbit.rotation.x = Math.PI / 2;
                 scene.add(orbit);
             }
 
+            // ✅ Safe now
             object.userData = {
                 ...planet,
                 id: index,
-                angle: Math.random() * Math.PI * 2
+                angle: Math.random() * Math.PI * 2,
+                isHovered: false
             };
 
             scene.add(object);
@@ -227,39 +453,44 @@
         });
 
 
-
         // Animation State
 
         let focusTarget = null;
 
         // Setup UI
+
+
         const planetListEl = document.getElementById('planet-list');
 
+        // Create navigation buttons
         planetsData.forEach((planet, index) => {
             const btn = document.createElement('button');
             btn.className = `planet-nav-item glass-panel px-4 py-2 rounded-xl flex items-center gap-3 hover:bg-white/10 transition-all group min-w-[160px] border border-transparent`;
 
             btn.innerHTML = `
-        <div class="w-6 h-6 flex items-center justify-center rounded-md bg-white/10 group-hover:bg-white/20 transition">
-                 <i 
-                    data-lucide="${planet.icon}" 
-                    class="w-4 h-4"
-                    style="color: #${planet.color.toString(16).padStart(6, '0')}"
-                ></i>
-        </div>
-        <div class="text-left">
-            <div class="text-xs font-medium text-slate-200 group-hover:text-white">
-                ${planet.name}
-            </div>
-            <div class="text-[10px] text-slate-400">
-                ${planet.type}
-            </div>
-        </div>
-    `;
+                                <div 
+                                    class="w-3 h-3 rounded-full flex-shrink-0"
+                                    style="background-color: #${planet.color.toString(16).padStart(6, '0')}"
+                                ></div>
+
+                                <div class="text-left">
+                                    <div class="text-xs font-medium text-slate-200 group-hover:text-white">
+                                        ${planet.name}
+                                    </div>
+                                    <div class="text-[10px] text-slate-400">
+                                        ${planet.category}
+                                    </div>
+                                </div>
+                            `;
+
 
             btn.onclick = () => focusOnPlanet(index);
+
             planetListEl.appendChild(btn);
         });
+
+
+
 
         lucide.createIcons();
 
@@ -324,14 +555,19 @@
 
                 // Sun rotation
                 if (index === 0) {
-                    mesh.rotation.y += 0.003;
+                    // mesh.rotation.y += 0.003;
                     return;
                 }
 
                 const data = mesh.userData;
 
                 // Orbit movement
-                data.angle += data.speed;
+
+                if (!data.isHovered) {
+                    data.angle += data.speed;
+                }
+
+
                 const x = Math.cos(data.angle) * data.distance;
                 const z = Math.sin(data.angle) * data.distance;
 
@@ -362,11 +598,84 @@
                 camera.lookAt(targetMesh.position);
             } else if (focusTarget === null) {
                 // Idle rotation of entire system slightly
-                scene.rotation.y += 0.0005;
+                if (!isHoveringPlanet) {
+                    scene.rotation.y += 0.0005;
+                }
             }
 
             renderer.render(scene, camera);
         }
+
+        // Click Handling
+        renderer.domElement.addEventListener('click', onPlanetClick);
+
+        function onPlanetClick(event) {
+            // Mouse position normalize (-1 to +1)
+            const rect = renderer.domElement.getBoundingClientRect();
+            mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+
+            // Sirf planet meshes check karo
+            const intersects = raycaster.intersectObjects(planetMeshes, true);
+
+            if (intersects.length > 0) {
+                const clickedObject = intersects[0].object;
+
+                // Sprite ya child object ho sakta hai
+                const planetMesh = clickedObject.parent.userData?.id !== undefined
+                    ? clickedObject.parent
+                    : clickedObject;
+
+                if (planetMesh.userData && planetMesh.userData.id !== undefined) {
+                    focusOnPlanet(planetMesh.userData.id);
+                }
+            }
+        }
+
+        renderer.domElement.addEventListener('mousemove', onPlanetHover);
+
+        function onPlanetHover(event) {
+            const rect = renderer.domElement.getBoundingClientRect();
+
+            mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+
+            const intersects = raycaster.intersectObjects(planetMeshes, true);
+
+            // 🔴 Reset all hover states
+            planetMeshes.forEach(mesh => {
+                if (mesh.userData) mesh.userData.isHovered = false;
+            });
+
+            if (intersects.length > 0) {
+                const hoveredObject = intersects[0].object;
+
+                const planetMesh = hoveredObject.parent.userData?.id !== undefined
+                    ? hoveredObject.parent
+                    : hoveredObject;
+
+                if (planetMesh.userData) {
+                    planetMesh.userData.isHovered = true; // ✅ ONLY THIS PLANET PAUSED
+
+                    renderer.domElement.style.cursor = 'pointer';
+
+                    tooltip.textContent = planetMesh.userData.name;
+                    tooltip.style.left = event.clientX + 12 + 'px';
+                    tooltip.style.top = event.clientY + 12 + 'px';
+                    tooltip.style.opacity = '1';
+                }
+            } else {
+                renderer.domElement.style.cursor = 'default';
+                tooltip.style.opacity = '0';
+            }
+        }
+
+
+
 
         // Start
         animate();
@@ -376,8 +685,8 @@
             setTimeout(() => {
                 const loader = document.getElementById('loader');
                 loader.style.opacity = '0';
-                setTimeout(() => loader.remove(), 1000);
-            }, 1500);
+                setTimeout(() => loader.remove(), 100);
+            }, 300);
         };
 
         // Handle Resize
@@ -388,7 +697,6 @@
         });
 
     </script>
-
 
 
 

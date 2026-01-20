@@ -29,12 +29,11 @@ const Navbar = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-lg shadow-background/50" 
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-lg shadow-background/50"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -54,18 +53,16 @@ const Navbar = () => {
               <MagneticElement key={item.label} strength={0.2}>
                 <Link
                   to={item.href}
-                  className={`relative py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive(item.href) 
-                      ? "text-primary" 
+                  className={`relative py-2 text-sm font-medium transition-colors duration-300 ${isActive(item.href)
+                      ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   {item.label}
                   {/* Animated underline */}
-                  <span 
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${
-                      isActive(item.href) ? "w-full" : "w-0"
-                    }`}
+                  <span
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${isActive(item.href) ? "w-full" : "w-0"
+                      }`}
                   />
                   <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
                 </Link>
@@ -75,13 +72,23 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <MagneticElement strength={0.3}>
-              <Button className="btn-glow bg-primary text-primary-foreground hover:bg-primary/90 relative overflow-hidden group">
-                <span className="relative z-10">Get In Touch</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ animation: 'shimmer 2s linear infinite' }} />
-              </Button>
-            </MagneticElement>
+            
+            <Link to="/contact">
+              <MagneticElement strength={0.3}>
+                <Button className="btn-glow bg-primary text-primary-foreground hover:bg-primary/90 relative overflow-hidden group">
+                  <span className="relative z-10">Get In Touch</span>
+                  <div
+                    className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ animation: "shimmer 2s linear infinite" }}
+                  />
+                </Button>
+              </MagneticElement>
+            </Link>
           </div>
+
+
+
+
 
           {/* Mobile Menu Button */}
           <button
@@ -89,12 +96,12 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className="relative w-6 h-6">
-              <Menu 
-                size={24} 
+              <Menu
+                size={24}
                 className={`absolute transition-all duration-300 ${isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"}`}
               />
-              <X 
-                size={24} 
+              <X
+                size={24}
                 className={`absolute transition-all duration-300 ${isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"}`}
               />
             </div>
@@ -102,30 +109,33 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div 
-          className={`md:hidden overflow-hidden transition-all duration-500 ${
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="py-4 border-t border-border space-y-1">
             {navItems.map((item, index) => (
               <Link
                 key={item.label}
                 to={item.href}
-                className={`block py-3 px-4 rounded-lg transition-all duration-300 ${
-                  isActive(item.href)
+                className={`block py-3 px-4 rounded-lg transition-all duration-300 ${isActive(item.href)
                     ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                }`}
+                  }`}
                 onClick={() => setIsOpen(false)}
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 {item.label}
               </Link>
             ))}
-            <Button className="btn-glow bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-4">
-              Get In Touch
-            </Button>
+
+<Link to="/contact" onClick={() => setIsOpen(false)}>
+  <Button className="btn-glow bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-4">
+    Get In Touch
+  </Button>
+</Link>
+
+
           </div>
         </div>
       </div>
