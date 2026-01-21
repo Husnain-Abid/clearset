@@ -10,7 +10,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
 
         body {
             font-family: 'Inter', sans-serif;
@@ -39,8 +40,8 @@
         }
 
         .planet-nav-item.active {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: #ffffff26;
+            border-color: #ffffff4d;
         }
 
         canvas {
@@ -77,18 +78,12 @@
             </button>
         </div>
 
-
-
         <div class="space-y-2">
             <h3 class="text-xs font-medium uppercase tracking-wider text-slate-500">Description</h3>
             <p id="panel-fact" class="text-sm text-slate-300 leading-relaxed">Service description goes here.</p>
         </div>
 
-
     </aside>
-
-
-
 
     <!-- Bottom Controls & Nav -->
     <div class="absolute bottom-8 left-6 right-6 z-50 flex flex-col gap-4 pointer-events-none">
@@ -102,14 +97,6 @@
 
     </div>
 
-
-
-
-
-
-
-
-
     <!-- Overlay for loading -->
     <div id="loader"
         class="absolute inset-0 z-[60] bg-slate-950 flex items-center justify-center flex-col gap-4 transition-opacity duration-1000">
@@ -121,7 +108,7 @@
 
 
     <div id="planet-tooltip"
-        style="position: fixed; left: 712px; top: 582px; background: rgba(0, 230, 184, 0.1); border: 1px solid rgba(0, 230, 184, 0.3); padding: 8px 12px; border-radius: 6px; color: rgb(235, 253, 250); font-size: 12px; font-weight: 500; pointer-events: none; z-index: 30; white-space: nowrap; backdrop-filter: blur(8px);">
+        style="position: fixed; left: 712px; top: 582px; background: rgba(0, 230, 184, 0.1); border: 1px solid rgba(0, 230, 184, 0.3); padding: 8px 12px; border-radius: 6px; color: #ebfdfa; font-size: 12px; font-weight: 500; pointer-events: none; z-index: 30; white-space: nowrap; backdrop-filter: blur(8px);">
     </div>
 
 
@@ -132,105 +119,105 @@
         lucide.createIcons();
 
         // Data: Solar System
-const planetsData = [
-    {
-        name: "Clearset",
-        color: 0x00E6B8,
-        size: 14,
-        distance: 0,
-        speed: 0,
-        desc: "Your trusted partner in innovation and digital transformation. We design, build, and scale intelligent digital solutions that empower businesses to grow faster and smarter.",
-        category: "Core Brand",
-        power: "N/A",
-        type: "Company Hub",
-        capability: 100,
-        isCenter: true
-    },
-    {
-        name: "Machine Learning",
-        color: 0x00E6B8,
-        size: 3.5,
-        distance: 35,
-        speed: 0.015,
-        desc: "Advanced machine learning models built for real-world business problems. We enable automation, prediction, and data-driven decision making at scale.",
-        category: "AI Services",
-        power: "Ultra",
-        type: "Service",
-        capability: 92
-    },
-    {
-        name: "NLP Solutions",
-        color: 0x38BDF8, // Sky Blue
-        size: 3.2,
-        distance: 50,
-        speed: 0.012,
-        desc: "Natural Language Processing solutions for understanding human language. From chatbots to sentiment analysis, we turn text into actionable insights.",
-        category: "AI Services",
-        power: "Ultra",
-        type: "Service",
-        capability: 88
-    },
-    {
-        name: "Mobile Development",
-        color: 0x22C55E, // Emerald Green
-        size: 3.8,
-        distance: 68,
-        speed: 0.009,
-        desc: "High-performance mobile applications for iOS and Android platforms. We focus on scalability, smooth user experience, and long-term maintainability.",
-        category: "Development",
-        power: "High",
-        type: "Service",
-        capability: 85
-    },
-    {
-        name: "Cloud Engineering",
-        color: 0xF59E0B, // Amber
-        size: 4.2,
-        distance: 85,
-        speed: 0.007,
-        desc: "Robust cloud infrastructure designed for reliability and scale. We specialize in DevOps, automation, and secure cloud-native architectures.",
-        category: "Infrastructure",
-        power: "Ultra",
-        type: "Service",
-        capability: 90
-    },
-    {
-        name: "SaaS Solutions",
-        color: 0x6366F1, // Indigo Blue
-        size: 3.6,
-        distance: 105,
-        speed: 0.006,
-        desc: "End-to-end SaaS product development from idea to launch. We build scalable, multi-tenant platforms optimized for growth and performance.",
-        category: "Development",
-        power: "High",
-        type: "Service",
-        capability: 87
-    },
-    {
-        name: "AI Consultancy",
-        color: 0x06B6D4, // Cyan
-        size: 3.4,
-        distance: 125,
-        speed: 0.005,
-        desc: "Strategic AI consulting to guide digital transformation journeys. We help businesses adopt AI responsibly with measurable business impact.",
-        category: "Advisory",
-        power: "Ultra",
-        type: "Service",
-        capability: 89
-    },
-    {
-        name: "Call Center Tech",
-        color: 0x14B8A6, // Teal Green
-        size: 3.9,
-        distance: 150,
-        speed: 0.004,
-        desc: "Smart call center technologies powered by AI automation. Improve customer experience with intelligent routing, analytics, and voice solutions.",
-        category: "Contact Center",
-        power: "High",
-        type: "Service",
-        capability: 86
-    }
-];
+        const planetsData = [
+            {
+                name: "Clearset",
+                color: 0x00e6b8,
+                size: 14,
+                distance: 0,
+                speed: 0,
+                desc: "Your trusted partner in innovation and digital transformation. We design, build, and scale intelligent digital solutions that empower businesses to grow faster and smarter.",
+                category: "Core Brand",
+                power: "N/A",
+                type: "Company Hub",
+                capability: 100,
+                isCenter: true
+            },
+            {
+                name: "Machine Learning",
+                color: 0x00e6b8,
+                size: 3.5,
+                distance: 35,
+                speed: 0.015,
+                desc: "Advanced machine learning models built for real-world business problems. We enable automation, prediction, and data-driven decision making at scale.",
+                category: "AI Services",
+                power: "Ultra",
+                type: "Service",
+                capability: 92
+            },
+            {
+                name: "NLP Solutions",
+                color: 0xFF1493,
+                size: 3.2,
+                distance: 50,
+                speed: 0.012,
+                desc: "Natural Language Processing solutions for understanding human language. From chatbots to sentiment analysis, we turn text into actionable insights.",
+                category: "AI Services",
+                power: "Ultra",
+                type: "Service",
+                capability: 88
+            },
+            {
+                name: "Mobile Development",
+                color: 0x00FF88,
+                size: 3.8,
+                distance: 68,
+                speed: 0.009,
+                desc: "High-performance mobile applications for iOS and Android platforms. We focus on scalability, smooth user experience, and long-term maintainability.",
+                category: "Development",
+                power: "High",
+                type: "Service",
+                capability: 85
+            },
+            {
+                name: "Cloud Engineering",
+                color: 0xFFAA00,
+                size: 4.2,
+                distance: 85,
+                speed: 0.007,
+                desc: "Robust cloud infrastructure designed for reliability and scale. We specialize in DevOps, automation, and secure cloud-native architectures.",
+                category: "Infrastructure",
+                power: "Ultra",
+                type: "Service",
+                capability: 90
+            },
+            {
+                name: "SaaS Solutions",
+                color: 0x7C3AED,
+                size: 3.6,
+                distance: 105,
+                speed: 0.006,
+                desc: "End-to-end SaaS product development from idea to launch. We build scalable, multi-tenant platforms optimized for growth and performance.",
+                category: "Development",
+                power: "High",
+                type: "Service",
+                capability: 87
+            },
+            {
+                name: "AI Consultancy",
+                color: 0x06B6D4,
+                size: 3.4,
+                distance: 125,
+                speed: 0.005,
+                desc: "Strategic AI consulting to guide digital transformation journeys. We help businesses adopt AI responsibly with measurable business impact.",
+                category: "Advisory",
+                power: "Ultra",
+                type: "Service",
+                capability: 89
+            },
+            {
+                name: "Call Center Tech",
+                color: 0xFF00FF,
+                size: 3.9,
+                distance: 150,
+                speed: 0.004,
+                desc: "Smart call center technologies powered by AI automation. Improve customer experience with intelligent routing, analytics, and voice solutions.",
+                category: "Contact Center",
+                power: "High",
+                type: "Service",
+                capability: 86
+            }
+        ];
 
 
         // Three.js Setup
@@ -275,6 +262,8 @@ const planetsData = [
         scene.add(starMesh);
 
 
+        let sunLabelSprite = null;
+
         async function createSunSprite(planet, sunMesh) {
             await document.fonts.load('bold 380px Inter');
 
@@ -284,14 +273,17 @@ const planetsData = [
             const ctx = canvas.getContext("2d");
 
             ctx.font = "bold 380px Inter";
+            ctx.marginTop = "40px";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            ctx.fillStyle = "#070b1c";
+            ctx.fillStyle = "#ebfdfa";
+            const yOffset = 20; // 👈 margin-top effect
+            ctx.fillText("C", canvas.width / 2, canvas.height / 2 + yOffset);
             // ctx.fillText("C", canvas.width / 2, canvas.height / 2);
 
             const texture = new THREE.CanvasTexture(canvas);
 
-            const sprite = new THREE.Sprite(
+            sunLabelSprite = new THREE.Sprite(
                 new THREE.SpriteMaterial({
                     map: texture,
                     transparent: true,
@@ -299,16 +291,9 @@ const planetsData = [
                 })
             );
 
-            sprite.scale.set(planet.size * 2.8, planet.size * 2.8, 1);
-            sprite.position.set(-1, 0, 3);
-
-            // 🔒 LOCK rotation completely
-            sprite.onBeforeRender = () => {
-                sprite.quaternion.copy(camera.quaternion);
-                sprite.rotation.z = 0;
-            };
-
-            sunMesh.add(sprite); // ✅ CHILD OF SUN
+            sunLabelSprite.scale.set(planet.size * 2.8, planet.size * 2.8, 1);
+            sunLabelSprite.position.set(0, 0, 0);
+            scene.add(sunLabelSprite);
         }
 
         // ===================================================

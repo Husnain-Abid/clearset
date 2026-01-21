@@ -31,8 +31,8 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-lg shadow-background/50"
-          : "bg-transparent"
+        ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-lg shadow-background/50"
+        : "bg-transparent"
         }`}
     >
       <div className="container mx-auto px-4">
@@ -54,8 +54,8 @@ const Navbar = () => {
                 <Link
                   to={item.href}
                   className={`relative py-2 text-sm font-medium transition-colors duration-300 ${isActive(item.href)
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                     }`}
                 >
                   {item.label}
@@ -72,7 +72,7 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            
+
             <Link to="/contact">
               <MagneticElement strength={0.3}>
                 <Button className="btn-glow bg-primary text-primary-foreground hover:bg-primary/90 relative overflow-hidden group">
@@ -119,8 +119,8 @@ const Navbar = () => {
                 key={item.label}
                 to={item.href}
                 className={`block py-3 px-4 rounded-lg transition-all duration-300 ${isActive(item.href)
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                  ? "bg-primary/10 text-primary"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}
                 onClick={() => setIsOpen(false)}
                 style={{ animationDelay: `${index * 50}ms` }}
@@ -129,11 +129,11 @@ const Navbar = () => {
               </Link>
             ))}
 
-<Link to="/contact" onClick={() => setIsOpen(false)}>
-  <Button className="btn-glow bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-4">
-    Get In Touch
-  </Button>
-</Link>
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <Button className="btn-glow bg-primary text-primary-foreground hover:bg-primary/90 w-full mt-4">
+                Get In Touch
+              </Button>
+            </Link>
 
 
           </div>
